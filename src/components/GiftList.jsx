@@ -1,23 +1,13 @@
-import React from "react";
-
-export default function GifList({ gifs }) {
+const GiftList = ({ images }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "10px",
-        marginTop: "20px",
-      }}
-    >
-      {gifs.map((gif, index) => (
-        <img
-          key={`${gif.id}-${index}`}
-          src={gif.images.fixed_height.url}
-          alt={gif.title}
-          style={{ cursor: "pointer", borderRadius: "6px" }}
-        />
+    <ul>
+      {images.map(({ id, webformatURL, tags }) => (
+        <li key={id}>
+          <img src={webformatURL} alt={tags} />
+        </li>
       ))}
-    </div>
+    </ul>
   );
-}
+};
+
+export default GiftList;
